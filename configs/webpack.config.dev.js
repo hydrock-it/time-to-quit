@@ -18,6 +18,37 @@ const devConfig = {
         }
       },
       {
+        test: /\.css$/,
+        use: [
+            'style-loader',
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: false
+                }
+            }
+        ]
+      },
+      {
+        test: [/\.scss$/],
+        use: [
+            'style-loader',
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                    localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
+            },
+            {
+                loader: 'sass-loader',
+                options: {
+                    includePaths: ['./src/styles']
+                }
+            }
+        ]
+      },
+      {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -39,6 +70,12 @@ const devConfig = {
         }
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', 'svg'],
+    alias: {
+        src: path.resolve(__dirname, '../src')
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
