@@ -7,7 +7,7 @@ const prodConfig = {
     entry: './index.jsx',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: '[name].bundle.js'
+        filename: '[name]-[hash:6].bundle.js'
     },
     module: {
       rules: [
@@ -18,24 +18,32 @@ const prodConfig = {
           }
         },
         {
+          test: [/\.(css|scss)$/],
+          use: [
+              'style-loader',
+              'css-loader',
+              'sass-loader',
+          ]
+        },
+        {
           test: /\.(jpg|jpeg|png|gif|svg)$/,
           loader: 'file-loader',
           options: {
-            name: 'static/images/[name].[ext]',
+            name: 'static/images/[name]-[hash:6].[ext]',
           }
         },
         {
           test: /\.(ttf|eot|woff|woff2)$/,
           loader: 'file-loader',
           options: {
-            name: 'static/fonts/[name].[ext]'
+            name: 'static/fonts/[name]-[hash:6].[ext]'
           }
         },
         {
           test: /\.(mp3|aac)$/,
           loader: 'file-loader',
           options: {
-            name: 'static/sounds/[name].[ext]'
+            name: 'static/sounds/[name]-[hash:6].[ext]'
           }
         }
       ]
@@ -49,7 +57,7 @@ const prodConfig = {
     plugins: [
         new HtmlWebpackPlugin({
             inject: true,
-            templates: './template/index.html',
+            template: './templates/index.html',
             title: 'QST - quit smoking time!',
         }),
     ]

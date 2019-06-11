@@ -18,6 +18,14 @@ const devConfig = {
         }
       },
       {
+        test: [/\.(css|scss)$/],
+        use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+        ]
+      },
+      {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -39,6 +47,12 @@ const devConfig = {
         }
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', 'svg'],
+    alias: {
+        src: path.resolve(__dirname, '../src')
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
