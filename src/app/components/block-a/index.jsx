@@ -1,12 +1,12 @@
 import React from 'react';
-import style from './style.scss';
+import './style.scss';
 
 const BlockA = () => {
   return (
-    <div className={style.block}>
+    <div className='block__a'>
       <h3>Block A</h3>
     </div>
-  )
+  );
 }
 
 export default BlockA;

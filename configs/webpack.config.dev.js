@@ -18,34 +18,11 @@ const devConfig = {
         }
       },
       {
-        test: /\.css$/,
+        test: [/\.(css|scss)$/],
         use: [
             'style-loader',
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: false
-                }
-            }
-        ]
-      },
-      {
-        test: [/\.scss$/],
-        use: [
-            'style-loader',
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: true,
-                    localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
-            },
-            {
-                loader: 'sass-loader',
-                options: {
-                    includePaths: ['./src/styles']
-                }
-            }
+            'css-loader',
+            'sass-loader',
         ]
       },
       {

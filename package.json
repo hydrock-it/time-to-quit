@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --port 3000 --config configs/webpack.config.dev.js",
-    "build": "webpack --progress --config configs/webpack.config.prod.js"
+    "build": "rm -rf ./dist && webpack --progress --config configs/webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
