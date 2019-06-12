@@ -23,5 +23,3 @@ const counter = (state = initState, action) => {
 }
 
 export default counter;
-
-
