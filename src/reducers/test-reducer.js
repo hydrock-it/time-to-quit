@@ -1,4 +1,4 @@
-import { AT_COUNTER_INC, AT_COUNTER_DEC, AT_COUNTER_RES } from '../constants';
+import { actionsType } from '../constants';
 
 const initState = {
   count: 0,
@@ -6,17 +6,14 @@ const initState = {
 
 const counter = (state = initState, action) => {
   switch(action.type) {
-    case AT_COUNTER_INC: {
-      const newState = { ...state, count: state.count + 1 };
-      return newState;
+    case actionsType.COUNTER_INC: {
+      return { ...state, count: state.count + 1 };
     }
-    case AT_COUNTER_DEC: {
-      const newState = { ...state, count: state.count - 1 };
-      return newState;
+    case actionsType.COUNTER_DEC: {
+      return { ...state, count: state.count - 1 };
     }
-    case AT_COUNTER_RES: {
-      const newState = { ...state, count: 0 };
-      return newState;
+    case actionsType.COUNTER_RES: {
+      return { ...state, count: 0 };
     }
     default: return state;
   }
