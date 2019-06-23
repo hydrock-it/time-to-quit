@@ -1,14 +1,13 @@
 import React from 'react';
-import Counter from '../counter';
+import StartData from '../start-data';
 
 import './style.scss';
 
-
-const MainContainer = () => {
+const MainContainer = (props) => {
   return (
     <div className='container'>
-      <h3>Mian Container</h3>
-      <Counter />
+      <h3>Main Container</h3>
+      <StartData />
     </div>
   );
 }
