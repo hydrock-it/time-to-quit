@@ -6,19 +6,19 @@ const initState = {
   cigarettesInDay: 0,
   price: 0,
   nicotine: 0,
-  tar: 0
-}
+  tar: 0,
+};
 
 const smokingData = (state = initState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case actionsType.SET_SMOKING_DATA: {
-      return { 
-        ...state, 
+      return {
+        ...state,
         ...action.payload,
-       };
+      };
     }
     default: return state;
   }
-}
+};
 
 export default smokingData;

@@ -1,36 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { actionsType } from '../../../../constants';
 import PropTypes from 'prop-types';
+import { actionsType } from '../../../../constants';
 
 import './style.scss';
 
-class StartStep extends Component {
-  render() {
-    const { nextStep } = this.props;
-    return (
-      <div className='start-step'>
-        <h3>StartStep</h3>
-        <button onClick={nextStep} >Начинаем!</button>
-      </div>
-    );
-  }
-}
+const StartStep = (props) => {
+  const { nextStep } = props;
+  return (
+    <div className="start-step">
+      <h3>StartStep</h3>
+      <button type="button" onClick={nextStep}>Начинаем!</button>
+    </div>
+  );
+};
 
-const mapStateToProps = store => {
-  return {
-    step: store.wizard.step
-  }
-}
+const mapStateToProps = store => ({
+  step: store.wizard.step,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    nextStep: () => dispatch({ type: actionsType.STEP_NEXT }),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  nextStep: () => dispatch({ type: actionsType.STEP_NEXT }),
+});
 
-StartStep.protoTypes = {
+StartStep.propTypes = {
   nextStep: PropTypes.func,
-} 
+};
+
+StartStep.defaultProps = {
+  nextStep: () => {},
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(StartStep);

@@ -2,10 +2,10 @@ import { actionsType } from '../constants';
 
 const initState = {
   count: 0,
-}
+};
 
 const counter = (state = initState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case actionsType.COUNTER_INC: {
       return { ...state, count: state.count + 1 };
     }
@@ -17,6 +17,6 @@ const counter = (state = initState, action) => {
     }
     default: return state;
   }
-}
+};
 
 export default counter;

@@ -1,46 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { actionsType } from '../../../constants';
 import PropTypes from 'prop-types';
+import { actionsType } from '../../../constants';
 
 import './style.scss';
 
-class Counter extends Component {
-
-  render() {
-    const { counter, increment, decrement, reset } = this.props
-    return (
-      <div className='counter'>
-        <span>Count: { counter.count } </span>
-        <div>
-          <button onClick={ increment }>INC +</button>
-          <button onClick={ decrement }>RES ↻</button>
-          <button onClick={ reset }>DEC -</button>
-        </div>
+const Counter = (props) => {
+  const {
+    counter, increment, decrement, reset,
+  } = props;
+  return (
+    <div className="counter">
+      <span>
+        Count:
+        { counter.count }
+      </span>
+      <div>
+        <button type="button" onClick={increment}>INC +</button>
+        <button type="button" onClick={decrement}>RES ↻</button>
+        <button type="button" onClick={reset}>DEC -</button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-const mapStateToProps = store => {
-  return {
-    counter: store.counter
-  }
-}
+const mapStateToProps = store => ({
+  counter: store.counter,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    increment: () => dispatch({ type: actionsType.COUNTER_INC }),
-    decrement: () => dispatch({ type: actionsType.COUNTER_RES }),
-    reset: () => dispatch({ type: actionsType.COUNTER_DEC })
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  increment: () => dispatch({ type: actionsType.COUNTER_INC }),
+  decrement: () => dispatch({ type: actionsType.COUNTER_RES }),
+  reset: () => dispatch({ type: actionsType.COUNTER_DEC }),
+});
 
 Counter.propTypes = {
   counter: PropTypes.number,
   increment: PropTypes.func,
   decrement: PropTypes.func,
   reset: PropTypes.func,
-}
+};
+
+Counter.defaultProps = {
+  counter: 0,
+  increment: () => {},
+  decrement: () => {},
+  reset: () => {},
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

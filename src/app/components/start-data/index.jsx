@@ -8,28 +8,26 @@ import ShowInfoStep from './show-info-step';
 
 import './style.scss';
 
-const StartData = (props) => {
-  return (
-    <div className='container'>
-      <Wizard>
-        <Wizard.Step hideControll={true}>
-          <StartStep />
-        </Wizard.Step>
-        <Wizard.Step>
-          <TermDateStep />
-        </Wizard.Step>
-        <Wizard.Step>
-          <CommonInfoStep />
-        </Wizard.Step>
-        <Wizard.Step>
-          <CigarettesInfoStep />
-        </Wizard.Step>
-        <Wizard.Step hideControll={true}>
-          <ShowInfoStep />
-        </Wizard.Step>
-      </Wizard>
-    </div>
-  );
-}
+const StartData = () => (
+  <div className="container">
+    <Wizard>
+      <Wizard.Step hideControll>
+        <StartStep />
+      </Wizard.Step>
+      <Wizard.Step>
+        <TermDateStep />
+      </Wizard.Step>
+      <Wizard.Step>
+        <CommonInfoStep />
+      </Wizard.Step>
+      <Wizard.Step>
+        <CigarettesInfoStep />
+      </Wizard.Step>
+      <Wizard.Step hideControll>
+        <ShowInfoStep />
+      </Wizard.Step>
+    </Wizard>
+  </div>
+);
 
 export default StartData;
