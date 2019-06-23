@@ -6,7 +6,7 @@ import './style.scss';
 const MainContainer = (props) => {
   return (
     <div className='container'>
-      <h3>Mian Container</h3>
+      <h3>Main Container</h3>
       <StartData />
     </div>
   );
