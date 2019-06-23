@@ -5,7 +5,9 @@ class Step extends Component {
   render() {
     return (
       <div className="step">
-        <div className="step--content">{ this.props.children }</div>
+        <div className="step--content">
+          { this.props.children }
+        </div>
         <br/>
         <div className="step--controll">
           <button 

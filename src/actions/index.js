@@ -1,10 +1,10 @@
 import { actionsType } from '../constants';
 
-export const setStartData = (event) => {
+export const setStartDataAC = (event) => {
   return {
     type: actionsType.SET_SMOKING_DATA,
-    smokingData: {
-      [event.target.name]: event.target.value
+    payload: {
+      [event.target.name]: +event.target.value
     }
   }
 }

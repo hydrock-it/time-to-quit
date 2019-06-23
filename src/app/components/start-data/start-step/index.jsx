@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsType } from '../../../../constants';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
@@ -27,5 +28,9 @@ const mapDispatchToProps = dispatch => {
     nextStep: () => dispatch({ type: actionsType.STEP_NEXT }),
   }
 }
+
+StartStep.protoTypes = {
+  nextStep: PropTypes.func,
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(StartStep);

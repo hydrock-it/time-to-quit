@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
@@ -32,6 +33,15 @@ const mapStateToProps = store => {
     nicotine: store.smokingData.nicotine,
     tar: store.smokingData.tar,
   }
+}
+
+ShowInfoStep.propTypes = {
+  dateOfTerminated: PropTypes.string,
+  cigarettesInPack: PropTypes.number,
+  cigarettesInDay: PropTypes.number,
+  price: PropTypes.number,
+  nicotine: PropTypes.number,
+  tar: PropTypes.number,
 }
 
 export default connect(mapStateToProps)(ShowInfoStep);

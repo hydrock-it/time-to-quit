@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsType } from '../../../constants';
 import Step from './step'
+import PropTypes from 'prop-types';
 
 class Wizard extends Component {
   
@@ -42,6 +43,12 @@ const mapDispatchToProps = dispatch => {
     nextStep: () => dispatch({ type: actionsType.STEP_NEXT }),
     prevStep: () => dispatch({ type: actionsType.STEP_PREV }),
   }
+}
+
+Wizard.propTypes = {
+  step: PropTypes.number,
+  nextStep: PropTypes.func,
+  prevStep: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wizard);

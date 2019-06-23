@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionsType } from '../../../../constants';
-import { setStartData } from '../../../../actions';
+import { setStartDataAC } from '../../../../actions';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
 class CigarettesInfoStep extends Component {
 
+  handleChange = (event) => this.props.setStartDataAC(event);
+
   render() {
-    const { nicotine, tar, setStartData } = this.props; 
+    const { nicotine, tar } = this.props; 
     return (
       <div className='cigarettes-info-step'>
         <h3>CigarettesInfoStep</h3>
@@ -21,7 +23,7 @@ class CigarettesInfoStep extends Component {
             max="100" 
             step="1" 
             defaultValue={nicotine}
-            onChange={() => setStartData(event)} />
+            onChange={this.handleChange} />
         </div>
         <div>
           <label htmlFor="tar">Содержит смолл: {tar}</label>
@@ -32,7 +34,7 @@ class CigarettesInfoStep extends Component {
             max="100" 
             step="1" 
             defaultValue={tar}
-            onChange={() => setStartData(event)} />
+            onChange={this.handleChange} />
         </div>
       </div>
     );
@@ -40,16 +42,23 @@ class CigarettesInfoStep extends Component {
 }
 
 const mapStateToProps = store => {
+  const { nicotine, tar } = store.smokingData;
   return {
-    nicotine: store.smokingData.nicotine,
-    tar: store.smokingData.tar,
+    nicotine: nicotine,
+    tar: tar,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setStartData: (event) => dispatch(setStartData(event))
+    setStartDataAC: (event) => dispatch(setStartDataAC(event))
   }
 }
+
+CigarettesInfoStep.protoTypes = {
+  setStartDataAC: PropTypes.func,
+  nicotine: PropTypes.number,
+  tar: PropTypes.number,
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CigarettesInfoStep);

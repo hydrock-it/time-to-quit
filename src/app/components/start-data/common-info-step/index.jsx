@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setStartData } from '../../../../actions';
+import { setStartDataAC } from '../../../../actions';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
 class CommonInfoStep extends Component {
+
+  handleChange = (event) => this.props.setStartDataAC(event);
   
   render() {
-    const { cigarettesInPack, cigarettesInDay, price, setStartData } = this.props;
+    const { cigarettesInPack, cigarettesInDay, price } = this.props;
     return (
       <div className='cigarettes-info-step'>
         <h3>CommonInfoStep</h3>
@@ -20,7 +23,7 @@ class CommonInfoStep extends Component {
             max="100" 
             step="1" 
             defaultValue={cigarettesInPack}
-            onChange={() => setStartData(event)} />
+            onChange={this.handleChange} />
         </div>
         
         <div>
@@ -32,7 +35,7 @@ class CommonInfoStep extends Component {
             max="100" 
             step="1" 
             defaultValue={cigarettesInDay}
-            onChange={() => setStartData(event)} />
+            onChange={this.handleChange} />
         </div>
         <div>
           <label htmlFor="price">Стоимость пачки: {price}</label>
@@ -43,7 +46,7 @@ class CommonInfoStep extends Component {
             max="100" 
             step="1" 
             defaultValue={price}
-            onChange={() => setStartData(event)} />
+            onChange={this.handleChange} />
         </div>
       </div>
     );
@@ -51,17 +54,25 @@ class CommonInfoStep extends Component {
 }
 
 const mapStateToProps = store => {
+  const { cigarettesInPack, cigarettesInDay, price } = store.smokingData;
   return {
-    cigarettesInPack: store.smokingData.cigarettesInPack,
-    cigarettesInDay: store.smokingData.cigarettesInDay,
-    price: store.smokingData.price,
+    cigarettesInPack: cigarettesInPack,
+    cigarettesInDay: cigarettesInDay,
+    price: price,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setStartData: (event) => dispatch(setStartData(event))
+    setStartDataAC: (event) => dispatch(setStartDataAC(event))
   }
+}
+
+CommonInfoStep.propTypes = {
+  cigarettesInPack: PropTypes.number,
+  cigarettesInDay: PropTypes.number,
+  price: PropTypes.number,
+  setStartDataAC: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommonInfoStep);

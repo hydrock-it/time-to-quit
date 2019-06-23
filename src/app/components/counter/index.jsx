@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsType } from '../../../constants';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
@@ -33,6 +34,13 @@ const mapDispatchToProps = dispatch => {
     decrement: () => dispatch({ type: actionsType.COUNTER_RES }),
     reset: () => dispatch({ type: actionsType.COUNTER_DEC })
   }
+}
+
+Counter.propTypes = {
+  counter: PropTypes.number,
+  increment: PropTypes.func,
+  decrement: PropTypes.func,
+  reset: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsType } from '../../../../constants';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
@@ -28,10 +29,17 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDataOfterminated: () => dispatch({ type: actionsType.SET_SMOKING_DATA, smokingData: {
-      dateOfTerminated: new Date().toJSON()
-    } })
+    setDataOfterminated: () => dispatch({ 
+        type: actionsType.SET_SMOKING_DATA, payload: {
+        dateOfTerminated: new Date().toJSON()
+      } 
+    })
   }
 }
+
+TermDateStep.protoTypes = {
+  dateOfTerminated: PropTypes.string,
+  setDataOfterminated: PropTypes.func,
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(TermDateStep);

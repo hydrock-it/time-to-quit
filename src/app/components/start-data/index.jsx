@@ -11,7 +11,6 @@ import './style.scss';
 const StartData = (props) => {
   return (
     <div className='container'>
-      <h3>StartData</h3>
       <Wizard>
         <Wizard.Step hideControll={true}>
           <StartStep />
