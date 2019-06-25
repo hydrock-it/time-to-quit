@@ -1,45 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { actionsType } from '../../../../constants';
 import PropTypes from 'prop-types';
+import { actionsType } from '../../../../constants';
 
 import './style.scss';
 
-class TermDateStep extends Component {
+const TermDateStep = (props) => {
+  const { setDataOfTerminated, dateOfTerminated } = props;
+  const date = new Date(dateOfTerminated).toLocaleDateString();
+  return (
+    <div className="term-date-step">
+      <h3>TermDateStep</h3>
+      <button type="button" onClick={setDataOfTerminated}>Сейчас!</button>
+      <p>{ date }</p>
+    </div>
+  );
+};
 
-  render() {
-    const { setDataOfterminated } = this.props;
-    const date = new Date(this.props.dateOfTerminated).toLocaleDateString()
+const mapStateToProps = store => ({
+  dateOfTerminated: store.smokingData.dateOfTerminated,
+});
 
-    return (
-      <div className='term-date-step'>
-        <h3>TermDateStep</h3>
-        <button onClick={setDataOfterminated} >Сейчас!</button>
-        <p>{ date }</p>
-      </div>
-    );
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  setDataOfTerminated: () => dispatch({
+    type: actionsType.SET_SMOKING_DATA,
+    payload: {
+      dateOfTerminated: new Date().toJSON(),
+    },
+  }),
+});
 
-const mapStateToProps = store => {
-  return {
-    dateOfTerminated: store.smokingData.dateOfTerminated
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setDataOfterminated: () => dispatch({ 
-        type: actionsType.SET_SMOKING_DATA, payload: {
-        dateOfTerminated: new Date().toJSON()
-      } 
-    })
-  }
-}
-
-TermDateStep.protoTypes = {
+TermDateStep.propTypes = {
   dateOfTerminated: PropTypes.string,
-  setDataOfterminated: PropTypes.func,
-} 
+  setDataOfTerminated: PropTypes.func,
+};
+
+TermDateStep.defaultProps = {
+  dateOfTerminated: '',
+  setDataOfTerminated: () => {},
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TermDateStep);

@@ -2,10 +2,10 @@ import { actionsType } from '../constants';
 
 const initState = {
   step: 0,
-}
+};
 
 const wizard = (state = initState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case actionsType.STEP_NEXT: {
       return { ...state, step: state.step + 1 };
     }
@@ -14,6 +14,6 @@ const wizard = (state = initState, action) => {
     }
     default: return state;
   }
-}
+};
 
 export default wizard;
