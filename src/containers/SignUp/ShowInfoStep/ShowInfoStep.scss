@@ -1,0 +1,10 @@
+.result-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0px;
+
+  &__desc, &__value {
+    margin: 10px 20px;
+  }
+}

@@ -1,0 +1,13 @@
+.user-info {
+  margin: 30px 0;
+
+  &__desc {
+    font-size: .9rem;
+    font-weight: 100;
+  }
+
+  &__value {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,20 @@
+.info-container {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container label {
+  margin-bottom: 15px;
+}
+
+.info-value {
+  margin: 0 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.info-description {
+  font-weight: 100;
+  font-size: .9rem;
+}
