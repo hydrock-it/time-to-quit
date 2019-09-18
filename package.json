@@ -11,6 +11,7 @@
     "webpack": "concurrently \"yarn webpack-server\" \"yarn webpack-client\"",
     "release": "cross-env NODE_ENV=production yarn build",
     "build": "yarn webpack",
+    "dev": "nodemon dist/server.js",
     "start": "node dist/server.js"
   },
   "repository": {
@@ -24,12 +25,22 @@
   },
   "homepage": "https://github.com/hydrock-it/time-to-quit#readme",
   "dependencies": {
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
     "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^4.1.1",
     "cross-env": "^5.2.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.6.11",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -38,6 +49,8 @@
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "validator": "^11.1.0",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
@@ -58,6 +71,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
     "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
