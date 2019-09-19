@@ -1,2 +1,2 @@
-export Info from './Info/Info';
-export Wizard from './Wizard/Wizard'
+export { default as Info } from './Info/Info';
+export { default as Wizard } from './Wizard/Wizard';

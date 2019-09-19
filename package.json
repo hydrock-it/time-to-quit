@@ -4,8 +4,14 @@
   "description": "QST - quit smoking time",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --port 3000 --config configs/webpack.config.dev.js",
-    "build": "rm -rf ./dist && webpack --progress --config configs/webpack.config.prod.js"
+    "_dev": "webpack-dev-server --port 3000 --config configs/webpack.config.dev.js",
+    "_build": "rm -rf ./dist && webpack --progress --config configs/webpack.config.prod.js",
+    "webpack-client": "webpack --config webpack/webpack.client.js",
+    "webpack-server": "webpack --config webpack/webpack.server.js",
+    "webpack": "concurrently \"yarn webpack-server\" \"yarn webpack-client\"",
+    "release": "cross-env NODE_ENV=production yarn build",
+    "build": "yarn webpack",
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,13 +24,21 @@
   },
   "homepage": "https://github.com/hydrock-it/time-to-quit#readme",
   "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^4.1.1",
+    "cross-env": "^5.2.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
