@@ -76,7 +76,7 @@ npm install
 3. Run 
 ```sh
 # or as dev
-yarn build && yarn start
+yarn build && yarn dev
 # or as production
 yarn release && yarn start
 ```

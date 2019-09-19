@@ -5,6 +5,7 @@
     "browser": true
   },
   "rules": {
+    "no-console":0,
     "import/prefer-default-export": false,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

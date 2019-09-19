@@ -1,6 +1,6 @@
 const nodeExternals = require('webpack-node-externals');
 
-const config = require('./config').createTarget(
+const config = require('../config/build').createTarget(
   { target: 'server' },
 );
 
